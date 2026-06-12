@@ -1,5 +1,4 @@
-﻿
-using ApartmentAgencyApp.Exceptions;
+﻿using ApartmentAgencyApp.Exceptions;
 using ApartmentAgencyApp.Models;
 using System.Collections.Generic;
 
@@ -9,35 +8,36 @@ namespace ApartmentAgencyApp.Services
     {
         private readonly IDateCalculationService _dateCalculationService;
         private readonly IApartmentService _apartmentService;
-        private readonly IReservationService _reservatonService;
+        private readonly IReservationService _reservationService;
 
+        public ApartmentAgencyService(
+            IDateCalculationService dateCalculationService,
+            IApartmentService apartmentService,
+            IReservationService reservationService)
+        {
+            _dateCalculationService = dateCalculationService;
+            _apartmentService = apartmentService;
+            _reservationService = reservationService;
+        }
 
         public void MakeApartmentReservation(ReservationRequest request)
         {
             RequestDaysInfo daysInfo = _dateCalculationService.GetDaysInfo(request.DateOfArrival, request.DateOfDeparture);
             ApartmentComplex complex;
 
-            if (request.ApartmentType.Equals(ApartmentType.BedOnly) && request.DistanceFromTheBeach < 500) 
+            if (request.ApartmentType.Equals(ApartmentType.BedOnly) && request.DistanceFromTheBeach < 500)
             {
-                if (request.NumberOfBeds >= 3) 
-                {
+                if (request.NumberOfBeds >= 3)
                     complex = ApartmentComplex.ComplexA;
-                }
                 else
-                {
                     complex = ApartmentComplex.ComplexB;
-                }
             }
-            else if (request.ApartmentType.Equals(ApartmentType.Studio)) 
+            else if (request.ApartmentType.Equals(ApartmentType.Studio))
             {
-                if (daysInfo.NumberOfDays >= 5 || daysInfo.NumberOfSeasonDays > 2) 
-                {
+                if (daysInfo.NumberOfDays >= 5 || daysInfo.NumberOfSeasonDays > 2)
                     complex = ApartmentComplex.ComplexB;
-                }
                 else
-                {
                     complex = ApartmentComplex.ComplexC;
-                }
             }
             else
             {
@@ -45,11 +45,16 @@ namespace ApartmentAgencyApp.Services
             }
 
             List<Apartment> availableApartments = _apartmentService.GetAvailableApartments(request);
-            if(availableApartments.Count == 0)
-            {
+
+            if (availableApartments.Count == 0)
                 throw new NoAvailableApartmentsException("Cannot make a reservation");
-            }
-            _reservatonService.MakeReservationInComplex(new Reservation { ApartmentId = availableApartments[0].Id, ReservationRequestId = request.Id, ApartmentComplex = complex });
+
+            _reservationService.MakeReservationInComplex(new Reservation
+            {
+                ApartmentId = availableApartments[0].Id,
+                ReservationRequestId = request.Id,
+                ApartmentComplex = complex
+            });
         }
 
         public ApartmentRank CalculateApartmentRank(double distanceFromTheBeach, int percentOfPositiveReviews, ApartmentType apartmentType, bool renovatedInTheLastYear)
@@ -60,14 +65,17 @@ namespace ApartmentAgencyApp.Services
                 {
                     if (renovatedInTheLastYear)
                         return ApartmentRank.First;
+
                     return ApartmentRank.Second;
                 }
+
                 return ApartmentRank.Third;
             }
             else if (apartmentType.Equals(ApartmentType.StudioWithTerrace))
             {
                 if (percentOfPositiveReviews <= 70 || distanceFromTheBeach > 1500.0)
                     return ApartmentRank.Second;
+
                 return ApartmentRank.First;
             }
 

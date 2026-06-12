@@ -114,11 +114,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApartmentAgencyServiceTest.cs" />
+    <Compile Include="PictParser.cs" />
+    <Compile Include="PictParser2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pict2.txt" />
+    <Content Include="PictResultati.txt" />
     <None Include="app.config" />
     <None Include="packages.config" />
+    <Content Include="Pict1.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApartmentAgencyApp\ApartmentAgencyApp.csproj">

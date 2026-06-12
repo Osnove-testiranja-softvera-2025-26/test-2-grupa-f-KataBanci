@@ -1,0 +1,28 @@
+ApartmentType: BedOnly,Studio,StudioWithTerrace
+DistanceFromTheBeach: 499,500
+NumberOfBeds: 2,3
+NumberOfDays: 4,5
+NumberOfSeasonDays: 2,3
+ExpectedComplex: ComplexA,ComplexB,ComplexC,ComplexD
+
+IF [ApartmentType]="BedOnly" AND [DistanceFromTheBeach]=499 AND [NumberOfBeds]=3 THEN [ExpectedComplex]="ComplexA";
+
+IF [ApartmentType]="BedOnly" AND [DistanceFromTheBeach]=499 AND [NumberOfBeds]=2 THEN [ExpectedComplex]="ComplexB";
+
+IF [ApartmentType]="BedOnly" AND [DistanceFromTheBeach]=500 THEN [ExpectedComplex]="ComplexD";
+
+IF [ApartmentType]="Studio" AND [NumberOfDays]=5 THEN [ExpectedComplex]="ComplexB";
+
+IF [ApartmentType]="Studio" AND [NumberOfDays]=4 AND [NumberOfSeasonDays]=3 THEN [ExpectedComplex]="ComplexB";
+
+IF [ApartmentType]="Studio" AND [NumberOfDays]=4 AND [NumberOfSeasonDays]=2 THEN [ExpectedComplex]="ComplexC";
+
+IF [ApartmentType]="StudioWithTerrace" THEN [ExpectedComplex]="ComplexD";
+
+
+
+
+
+
+
+

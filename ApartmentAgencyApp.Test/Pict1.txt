@@ -1,0 +1,24 @@
+DistanceFromTheBeach: 500,501,1500,1501
+PercentOfPositiveReviews: 70,71,80,81
+ApartmentType: Studio,BedOnly,StudioWithTerrace
+RenovatedInTheLastYear: true,false
+ExpectedRank: First,Second,Third,Forth
+
+IF [ApartmentType]="Studio" AND [PercentOfPositiveReviews]="81" AND [DistanceFromTheBeach]="500" AND [RenovatedInTheLastYear]="true" THEN [ExpectedRank]="First";
+
+IF [ApartmentType]="Studio" AND [PercentOfPositiveReviews]="81" AND [DistanceFromTheBeach]="500" AND [RenovatedInTheLastYear]="false" THEN [ExpectedRank]="Second";
+
+IF [ApartmentType]="Studio" AND [PercentOfPositiveReviews]="80" THEN [ExpectedRank]="Third";
+
+IF [ApartmentType]="Studio" AND [DistanceFromTheBeach]="501" THEN [ExpectedRank]="Third";
+
+IF [ApartmentType]="StudioWithTerrace" AND [PercentOfPositiveReviews]="70" THEN [ExpectedRank]="Second";
+
+IF [ApartmentType]="StudioWithTerrace" AND [DistanceFromTheBeach]="1501" THEN [ExpectedRank]="Second";
+
+IF [ApartmentType]="StudioWithTerrace" AND [PercentOfPositiveReviews]="71" AND [DistanceFromTheBeach]="1500" THEN [ExpectedRank]="First";
+
+IF [ApartmentType]="BedOnly" THEN [ExpectedRank]="Forth";
+
+
+

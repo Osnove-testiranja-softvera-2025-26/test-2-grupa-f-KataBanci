@@ -1,0 +1,41 @@
+REZULTATI PRVOG PICT-A
+
+DistanceFromTheBeach	PercentOfPositiveReviews	ApartmentType	RenovatedInTheLastYear	ExpectedRank
+1501	71	Studio	true	Third
+500	80	StudioWithTerrace	false	First
+1500	70	BedOnly	false	Forth
+501	70	StudioWithTerrace	true	Second
+1500	81	Studio	true	First
+501	81	Studio	false	Third
+1501	81	StudioWithTerrace	false	Second
+500	71	BedOnly	true	Forth
+500	80	Studio	true	Third
+1501	80	BedOnly	true	Forth
+1500	80	Studio	false	Second
+501	71	StudioWithTerrace	false	First
+500	70	Studio	false	Third
+501	81	Studio	true	Third
+500	81	StudioWithTerrace	false	Second
+1500	71	StudioWithTerrace	false	First
+1501	70	Studio	false	Third
+501	80	StudioWithTerrace	true	Forth
+501	81	BedOnly	false	Forth
+500	71	Studio	true	Second
+
+
+REZULTATI DRUGOG PICT-A
+
+
+ApartmentType	DistanceFromTheBeach	NumberOfBeds	NumberOfDays	NumberOfSeasonDays	ExpectedComplex
+StudioWithTerrace	500	2	4	2	ComplexD
+BedOnly	499	3	5	3	ComplexA
+Studio	500	3	4	3	ComplexB
+StudioWithTerrace	499	2	5	2	ComplexD
+StudioWithTerrace	499	3	4	2	ComplexD
+Studio	500	2	4	2	ComplexC
+BedOnly	500	2	5	3	ComplexD
+BedOnly	499	2	4	2	ComplexB
+BedOnly	499	3	4	2	ComplexA
+Studio	499	3	5	3	ComplexB
+Studio	499	3	4	2	ComplexC
+StudioWithTerrace	499	2	4	3	ComplexD
